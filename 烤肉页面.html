@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>烤肉屋</title>
+
+ <link href="幻灯片滑动倒影.css" rel="stylesheet" type="text/css"/>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="牛排css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container_wrapper_outter"></div>
+<div id="container_wrapper_inner">
+<div id="container">
+<div id="menu">
+      
+       	<ul>
+             <li><a href="index.html" class="current">主页</a></li>
+            <li><a href="烤肉页面.html">烤肉</a></li>
+            <li><a href="甜点页面.html" class="margin_r_330">甜品</a></li>
+            <li><a href="制作方法页面.html">制作方法</a></li>
+            <li><a href="讨论区.html">讨论区</a></li>
+            <li><a href="联系我们.html" >联系我们</a></li>
+        </ul>
+        
+        <div id="site_title">
+            <h1>
+                <a href="index.html" class="current">Steak And Dessert
+                <span>Waiting &nbsp;&nbsp;&nbsp;&nbsp;You</span></a>
+            </h1>
+        </div>
+        
+    </div> <!-- end of menu -->
+    
+    <div id="banner">
+     	
+        <div id="banner_section">
+			<h2>
+           This is the barbecue page, and you can see the world famous barbecue house here  </h2>
+            <p>Let's have a look at it</p>
+         
+		</div> <!-- banner section -->
+    
+    </div> <!-- end of banner -->
+    
+    <div id="content_wrapper">
+        <div id="content" align="center"><!-- end of main column -->
+             <div class="slider" align="center">
+     <!-- 0.修改 VIEW->Template(关键字替换)，增加template id-->
+         <div class="main" id="template_main" align="center">
+             <div class="main-i " id="main_{{index}}" >
+                 <div class="caption">
+                    
+                     <h3>{{h3}}</h3>
+                 </div>
+                 <img src="图片2/牛排图{{index}}.jpg"/>
+             </div>
+         </div>
+         <div class="ctrl" id="template_ctrl">
+             <a class="ctrl-i" id="ctrl_{{index}}" href="javascript:switchSlider({{index}});"><img src="图片2/牛排图{{index}}.jpg"></a>
+         </div>
+         
+     <script type="text/javascript">
+ 
+         //1.数据定义（实际生产环境中，应有后台给出）
+         var data = [
+             {img:1,h2:'澳洲牛排'},
+             {img:2,h2:'法式小牛排'},
+             {img:3,h2:'T骨牛排'},
+             {img:4,h2:'菲力牛排'},
+             {img:5,h2:'西冷牛排'},
+             {img:6,h2:'沙朗牛排'},
+             {img:7,h2:'肋眼牛排'}
+         ];
+ 
+         //2.通用函数
+         var g = function(id){
+             if(id.substr(0,1) == "."){
+                 return document.getElementsByClassName(id.substr(1));
+             }
+             return document.getElementById(id);
+         }
+ 
+         //3.添加所有幻灯片&对应按钮
+         function addSliders(){
+         //3.1获取模板
+             var tpl_main= g('template_main').innerHTML
+                              .replace(/^\s*/,'')
+                             .replace(/\s*$/,'');
+             var tpl_ctrl= g('template_ctrl').innerHTML
+                              .replace(/^\s*/,'')
+                             .replace(/\s*$/,'');
+             //3.2定义最终输出 html的变量
+             var out_main = []; //所有幻灯片变量
+             var out_ctrl = []; //所有控制按钮变量
+             //3.3遍历所有数据，构建最终输出的 HTML
+             for(i in data){
+                 var _html_main = tpl_main
+                         .replace(/{{index}}/g,data[i].img)
+                         .replace(/{{h2}}/g,data[i].h1)
+                         .replace(/{{h3}}/g,data[i].h2)
+                         .replace(/{{css}}/g,['','main-i_right'][i%2]);
+                 var _html_ctrl = tpl_ctrl
+                         .replace(/{{index}}/g,data[i].img);
+                 out_main.push(_html_main);
+                 out_ctrl.push(_html_ctrl);
+         }
+         //3.4吧HTML回写到对应的DOM里面
+         g('template_main').innerHTML = out_main.join('');
+         g('template_ctrl').innerHTML = out_ctrl.join('');
+ 
+         //7.增加 #main_background,以免出现空白背景
+         g('template_main').innerHTML += tpl_main
+                         .replace(/{{index}}/g,'{{index}}');
+         g('main_{{index}}').id = 'main_background';
+         }
+ 
+         //5.幻灯片切换
+         function switchSlider(n){
+             //5.1获得要展现的幻丁片&控制按钮 DOM
+             var main = g('main_'+n);
+             var ctrl = g('ctrl_'+n);
+             //5.2获得所有幻灯片以及控制按钮
+             var clear_main = g('.main-i');
+             var clear_ctrl = g('.ctrl-i');
+             //5.3清除他们的active样式
+             for(i=0;i<clear_ctrl.length;i++){
+                 clear_main[i].className = clear_main[i].className.replace('main-i_active','');
+                 clear_ctrl[i].className = clear_ctrl[i].className.replace('ctrl-i_active','');
+             }
+             for(i=0;i<clear_ctrl.length; i++ ){   //标准的遍历语法，真正意义上的数组对象可以用 for in循环。
+                  clear_main[i].className = clear_main[i].className
+                                     .replace(' main-i_active','');
+                  clear_ctrl[i].className = clear_ctrl[i].className
+                                     .replace(' ctrl-i_active','');
+                         }
+             //5.4为当前控制按钮和图片加样式
+             main.className += ' main-i_active';
+             ctrl.className += ' ctrl-i_active';
+             //7.2切换时复制上一张幻灯片到 main_background 中
+             setTimeout(function(){
+                 g('main_background').innerHTML = main.innerHTML;
+             },1000)
+         }
+         //6.动态调整图片的 margin-top ,使其垂直居中
+         function movePictures(){
+             var pictures = g('.picture');
+             for(i=0; i<pictures.length; i++){
+                 pictures[i].style.marginTop = (-1 * pictures[i].clientHeight/2) + 'px';
+             }
+         }
+         //4.定义何时处理幻灯片输出
+         window.onload = function(){
+             addSliders();
+             switchSlider(2);
+             setTimeout(function(){
+                 movePictures();
+             },100); 
+        }
+     </script>
+         
+        
+        <div class="cleaner"></div>
+        </div> <!-- end of content -->
+
+        <div class="cleaner"> 
+            <td><tr></tr></td>
+            <td><tr></tr></td>
+             </div>
+        <div class="content_bottom">
+			<p style="color: #996633;font-size: 16px;">想要学习这些烤肉的方法吗？</p> <a href="制作方法页面.html"><p style="color: #FF5809;font-size: 19px;"><strong> 请点击这里</strong></p></a>
+        </div>
+	</div> <!-- end of content wrapper -->      
+    
+    <div id="footer">
+		<td><tr align="center">&nbsp;&nbsp;&nbsp;&nbsp;<p align="center"><strong><span class="S16">不</span><span class="S18">一</span><span class="S20">样</span><span class="S22">的</span><span class="S24">烧</span><span class="S26">烤</span><span class="S28">体</span><span class="S30">验</span>，<span class="S30">烤</span><span class="S28">出</span><span class="S26">不</span><span class="S24">一</span><span class="S22">样</span><span class="S20">的</span><span class="S18">新</span><span class="S16">意</span>。</strong></p></tr></td>
+		<br><td><tr align="center"><p align="center"><strong><span class="S22">我在&nbsp;&nbsp;Steak&nbsp;&nbsp;And&nbsp;&nbsp;Dessert&nbsp;&nbsp;你在哪？？</span></strong></p> </tr></td><br>
+		<dl>
+			<dt style="color: #660033;font-size: 23px;text-align: center" class="p1">&nbsp;&nbsp;&nbsp;&nbsp;世界烤肉餐厅排行榜</dt>
+			<br>
+    <ul type="disc">
+		<li style="color: #663300;font-size: 18px;text-align: left" >1. 黎巴嫩首都贝鲁特：巴伯（Barbar）快餐店</li>
+   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/烤肉餐厅5.jpg"><br><br>
+   <p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为国际大都市，贝鲁特食品标准很高。巴伯是贝鲁特一家快餐店，其分店遍布全市，而旗舰店坐落在时尚之都哈姆拉（Hamra），店内顾客全天满座，生意及其火爆。
+     在巴伯店，你可以尽情享受美食带来的快乐，其中鸡肉沙瓦玛烤肉卷是最可口的美味小吃——将鸡肉放在伴有小豆蔻与肉桂的调料汁中，在充分吸收香料之后切成薄片，串成螺旋状的沙瓦玛，盛放在刚出炉的黎巴嫩大饼上，裹上少许蒜和泡菜，香气四溢、鲜美无比。</p>
+   <br><br>
+    <li style="color: #663300;font-size: 18px;">2.土耳其亚达那： z Asmaalti 烤肉与Dner沙龙</li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/烤肉餐厅2.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你还在苦苦寻觅一个烤肉大城吗？或许土耳其南部的亚达那城正是您的魂牵梦绕之地。亚达那城香辣羊羔肉名扬四方，其做法是将烤肉穿在铁签子上，放在橡木架上烧烤。待烤熟后，将其盛在大饼上，这样大饼可以充分吸收烤肉流出的鲜美肉汁。另外，还有烤熟的西红柿与辣椒以及洋葱沙拉、欧芹等与之搭配，味道更加香辣可口。地道的吃法是用餐叉将西红柿与辣椒捣碎，抹在饼上，裹上些许烤肉，在上面放些洋葱沙拉卷起来，肉质细嫩、油酥爽口，常常使顾客胃口大开、狼吞虎咽。</p><br><br>
+    <li style="color: #663300;font-size: 18px;">3.以色列阿布高什（Abu Ghosh）：Nagí店</li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/烤肉餐厅3.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以色列，烤肉店是犹太人与阿拉伯人一致的好去处：烤肉味道鲜美，令人回味无穷。在Nagí店，厨师将切碎的牛肉与洋葱、欧芹、松仁等混合后穿在铁签子上，放在烧烤架上烤制而成，烤肉外酥里嫩、醇厚可口，常常同米饭或沙拉一起食用</p><br><br>
+    <li style="color: #663300;font-size: 18px;">4. 希腊：圣托里尼（Santorini）和Kolonaki烤肉店</li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/烤肉餐厅4.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希腊的圣托里尼（Santorini）是个“心想事成”之地，尤其是你的烤肉梦，定会在此得以实现。这儿的皮塔三明治其量如快餐，价格低廉。猪肉皮塔三明治是备受欢迎的早午餐，其外层酥脆，皮塔饼热气腾腾，再加上西红柿、少许洋葱、一些奶油和酸奶黄瓜，顶上撒些油泼红辣椒，无论是从视觉还是味觉，都会让您食欲大增。
+位于雅典卡拉马基斯 Kolonaki的烤肉串的味道更是绝佳，它坐落在Lycabettus 半山途中，街边小吃在这个小餐馆华丽转身，成为一道道美味佳肴，使顾客常常恋恋不舍。</p><br><br>
+		<li style="color: #663300;font-size: 18px;">5. 伊朗比贾尔（Bijar）：萨尔瓦（Salva）餐馆</li>
+		 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/烤肉餐厅1.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;去过伊朗的人都会爱上它的烤肉。事实上，它可能会是你旅游期间的主食，因为烤肉店无处不在。然而，如果你去过比贾尔，就不会厌倦它的单调。比贾尔镇的烤肉因其汁多肉鲜而在国内享有盛誉。
+Kabab-koobideh的做法是将切碎的牛羊肉置于洋葱汁、调味料以及藏红花粉酱料中腌制，再用扁平的铁签子使烤肉成型，并放在火红的木炭上烧烤而成，之后盖在米饭上面，添加一些黄油搭配。
+配菜更是精妙：根据古波斯人传统，他们将生洋葱、烤西红柿、甜菜根以及猕猴桃等和烤肉一起食用，认为这样搭配饮食会更均衡。</p><br><br>
+		
+			</ul>
+     </dl>
+    </div>
+
+</div> 
+<!-- end of container -->
+
+</div>
+</div>
+</body>
+</html>

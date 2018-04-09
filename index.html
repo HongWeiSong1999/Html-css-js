@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>烤肉甜品屋</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+	window.onload = function(){
+		showLeftTime()
+	}
+	function checkTime(i){
+		if(i<10){
+			i = "0"+i;
+		}
+		return i;
+	}
+function showLeftTime()
+{
+var now=new Date();
+var year=now.getFullYear();
+var month=now.getMonth()+1;
+var day=now.getDate();
+var d = now.getDay();
+var hours=now.getHours();
+var minutes=now.getMinutes();
+var seconds=now.getSeconds();
+minutes = checkTime(minutes);
+seconds = checkTime(seconds);
+var weekday = new Array(7)
+weekday[0] = "星期日"
+weekday[1] = "星期一"
+weekday[2] = "星期二"
+weekday[3] = "星期三"
+weekday[4] = "星期四"
+weekday[5] = "星期五"
+weekday[6] = "星期六"
+document.all.show.innerHTML=""+year+"年"+month+"月"+day+"日 "+weekday[d]+hours+":"+minutes+":"+seconds+"";
+//一秒刷新一次显示时间
+var timeID=setTimeout(showLeftTime,1000);
+}
+//-->
+</script>
+</head>
+<body>
+<div id="container_wrapper_outter">
+<div id="container_wrapper_inner">
+<div id="container">
+<div id="menu">
+      
+       	<ul>
+            <li><a href="index.html" class="current">主页</a></li>
+            <li><a href="烤肉页面.html">烤肉</a></li>
+            <li><a href="甜点页面.html" class="margin_r_330">甜品</a></li>
+            <li><a href="制作方法页面.html">制作方法</a></li>
+            <li><a href="讨论区.html">讨论区</a></li>
+            <li><a href="联系我们.html" >联系我们</a></li>
+        </ul>
+        
+        <div id="site_title">
+            <h1>
+                <a href="index.html">Steak And Dessert
+                <span>Waiting &nbsp;&nbsp;&nbsp;&nbsp;You</span></a>
+            </h1>
+        </div>
+        
+    </div> <!-- end of menu -->
+    
+    <div id="banner">
+     	<div id="banner_section">
+        <label id="show" style="font-size: 25px">
+	显示时间的位置</label>
+			<h2>
+           This is our index page,Here you can learn the process of making some steak and dessert </h2>
+            <p>You can talk with others on this platform,Enjoy yourself!</p>
+         
+		</div> <!-- banner section -->
+    
+    </div> <!-- end of banner -->
+    
+    <div id="content_wrapper">
+        <div id="content">
+        
+        	<div id="main_column">
+            	
+                <div class="section_w590">
+                	
+                    <h2>牛排</h2>
+                    
+                    <div class="section_w590_content">
+                    
+						<p>说起西餐，大家似乎都会想起牛排，牛排早在十九世纪中已成了美国人最爱的食用方式。在西餐厅吃饭，饭菜有很多讲究，那么牛排有什么特点，又如何分类呢？<p><a href="https://baike.baidu.com/item/西冷牛排/6805082?fr=aladdin">西冷牛排(SIRLOIN）</a>：也叫沙朗牛排，是指肉质鲜嫩又带油花嫩筋的牛肉，基本上取自于牛背脊一带最柔嫩的牛肉，具体位置不同，风味也各有千秋。</p>  <p><a href="https://baike.baidu.com/item/菲力牛排/6804970?fr=aladdin">菲力牛排（FILLET）</a>：也称嫩牛柳，牛里脊（TENDERLOIN)，取自于牛的里肌肉（即腰内肉），运动量少，且肉质最嫩精瘦，油脂少，</p></p>
+                        
+               		  <p><a href="https://baike.baidu.com/item/煎红酒丁骨牛排/2857870">丁骨牛排(TBONE)：</a>是牛背上的脊骨肉，大块肉排中间夹着 T 字形的大骨,一边是菲力,一边是纽约客,肉质一细嫩一粗犷,或油腴或爽俐,点一客统统吃得到。</p>
+					<p><a href="https://baike.baidu.com/item/肋眼牛排/10366915?fr=aladdin">肋眼牛排(RIB EYE)</a> ：取自于牛肋脊部位，即牛骨边上的肉。肋眼牛排或许比不上腰脊肉那样嫩，但骨边肉向来好吃，油油嫩嫩的肉丝中夹着Q而有劲的油筋，比沙朗耐嚼，比菲力够味
+                        <div class="button_01 fr"><a href="https://jingyan.baidu.com/article/454316ab55737cf7a7c03abe.html">More</a></div>
+					</p>   
+                    </div>
+                    
+                </div>                
+               
+               <div class="cleaner_h50"></div>
+                
+                <div class="section_w590">
+                	
+                    <h2>甜品</h2>
+                    
+              <div class="section_w590_content">
+                    
+                    	<p>这里有提拉米苏，维也纳巧克力杏仁蛋糕，戚风蛋糕以及长崎蜂蜜蛋糕，你可以在这里学习并制作这些小甜品，我们会不断的更新这些甜品的种类以及制作方法在这个封面上，同时也欢迎你在我们的讨论区发表你的留言。 </p>
+                        
+                        <div class="cleaner_h20"></div>
+                        
+                        <div class="popular_meal_box margin_r_60">
+                        	<a href="#"><img src="images/牛排图7.jpg" alt="image" /></a>
+                          <h3>Steak&nbsp;&nbsp;For&nbsp;&nbsp;You</h3>
+                            <p>精选澳洲特级进口牛肉，澳洲牧场全程天然谷草饲养，平均30亩纯天然大草原仅饲养一头，牛肉肌理暨雪花肉纹清晰规整；</p>
+							<div class="price">单价：50元</div><a href="牛排制作方法.html">进入学习</a>
+                        </div>
+                        
+      <div class="popular_meal_box">
+                        	<a href="#"><img src="images/甜品图5.jpg" alt="image" /></a>
+                  <h3>Dessert&nbsp;&nbsp;For&nbsp;&nbsp;You</h3>
+                            <p>彩色的美味，大海般无边的美味都在蔚蓝彩味烘焙坊。让你每一口都这么享受。每一次的品尝，每一次的释放。</p>
+                            <div class="price">单价：10元</div> <a href="卡布奇诺制作方法.html">进入学习</a>
+                        </div>                      
+                  </div>
+                    
+                </div> 
+                
+            </div> <!-- end of main column -->
+            
+            <div id="side_column">
+            
+            		<div class="side_column_section">
+                   <h4>Categories</h4>
+                	 <ul class="category_list">
+                 	<li><a href="https://baike.baidu.com/item/澳洲牛排">澳洲牛排</a></li>
+                   <li><a href="https://www.xinshipu.com/s/b4f8b9c7c5a3c5c5b5c4d7f6b7a8b4f3c8ab/">带骨牛小排</a></li>
+                    <li><a href="https://baike.baidu.com/item/法式红酒牛排/1589224?fr=aladdin">法式红酒牛排</a></li>
+                            <li><a href="https://baike.baidu.com/item/提拉米苏/108?fr=aladdin">提拉米苏</a></li>
+                            <li><a href="https://baike.baidu.com/item/维也纳巧克力杏仁蛋糕">维也纳巧克力杏仁蛋糕</a></li>
+                            <li><a href="https://baike.baidu.com/item/戚风蛋糕/10119509?fr=aladdin">戚风蛋糕</a></li>
+                            <li><a href="https://baike.baidu.com/item/长崎蜂蜜蛋糕">长崎蜂蜜蛋糕</a></li>
+                        </ul>
+              </div>
+                    
+                    <div class="side_column_section">
+                    	<h4>Our Address</h4>
+                        <a href="http://www.hziee.edu.cn/" target="_blank"><img src="images/杭电信工.png"/></a>
+          				<p>
+                        店铺总部地址：浙江省杭州市青山湖科技城胜联路168号杭电信工<br />
+                        店铺分部（1）：河南工程学院<br />
+                        店铺分部（2）：南京理工大学   <br />
+                            Tel: 1234567890<br />
+          					      QQ:705390497 <br /><br />
+                        </p>
+              </div>
+             <div class="side_column_bottom"></div>
+            </div> <!-- end of side column -->
+        
+        <div class="cleaner"></div>
+        </div> <!-- end of content -->
+
+        <div class="cleaner"></div>
+        <div class="content_bottom"></div>
+	</div> <!-- end of content wrapper -->      
+    
+    <div id="footer">
+    
+	     <ul class="footer_menu">
+         <li><a href="index.html" class="current">主页</a></li>
+            <li><a href="烤肉页面.html">烤肉</a></li>
+            <li><a href="甜点页面.html">甜品</a></li>
+            <li><a href="制作方法页面.html">制作方法</a></li>
+            <li><a href="讨论区.html">讨论区</a></li>
+			 <li class="last_menu"><a href="联系我们.html" >联系我们</a></li>
+        </ul>
+        
+    	Copyright © 2017 <a href="http://www.hziee.edu.cn/">杭电信工</a> 
+       <a>17905316&nbsp;&nbsp;HWS</a>
+    </div>
+
+</div> 
+<!-- end of container -->
+
+</div>
+</div>
+</body>
+</html>

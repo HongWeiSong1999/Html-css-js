@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>烤肉甜品屋</title>
+
+ <link href="幻灯片滑动倒影.css" rel="stylesheet" type="text/css"/>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="牛排css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container_wrapper_outter"></div>
+<div id="container_wrapper_inner">
+<div id="container">
+<div id="menu">
+      
+       	<ul>
+             <li><a href="index.html" class="current">主页</a></li>
+            <li><a href="烤肉页面.html">烤肉</a></li>
+            <li><a href="甜点页面.html" class="margin_r_330">甜品</a></li>
+            <li><a href="制作方法页面.html">制作方法</a></li>
+            <li><a href="讨论区.html">讨论区</a></li>
+            <li><a href="联系我们.html" >联系我们</a></li>
+        </ul>
+        
+        <div id="site_title">
+            <h1>
+                <a href="index.html">Steak And Dessert
+                <span>Waiting &nbsp;&nbsp;&nbsp;&nbsp;You</span></a>
+            </h1>
+        </div>
+        
+    </div> <!-- end of menu -->
+    
+    <div id="banner">
+     	
+        <div id="banner_section">
+			<h2>
+           This is the dessert interface, and there are many famous snacks listed here. </h2>
+            <p>I hope you can get the technique of making desserts</p>
+         
+		</div> <!-- banner section -->
+    
+    </div> <!-- end of banner -->
+    
+    <div id="content_wrapper">
+        <div id="content" align="center"><!-- end of main column -->
+             <div class="slider" align="center">
+     <!-- 0.修改 VIEW->Template(关键字替换)，增加template id-->
+         <div class="main" id="template_main" align="center">
+             <div class="main-i " id="main_{{index}}" >
+                 <div class="caption">
+                    
+                     <h3>{{h3}}</h3>
+                 </div>
+                 <img src="图片2/甜品图{{index}}.jpg"/>
+             </div>
+         </div>
+         <div class="ctrl" id="template_ctrl">
+             <a class="ctrl-i" id="ctrl_{{index}}" href="javascript:switchSlider({{index}});"><img src="图片2/牛排图{{index}}.jpg"></a>
+         </div>
+         
+     <script type="text/javascript">
+ 
+         //1.数据定义（实际生产环境中，应有后台给出）
+        var data = [
+             {img:1,h2:'巧兹蛋糕'},
+             {img:2,h2:'草莓树干'},
+             {img:3,h2:'提拉米苏'},
+             {img:4,h2:'巧克力蛋糕'},
+             {img:5,h2:'缤纷小屋'},
+             {img:6,h2:'大白面包'},
+             {img:7,h2:'甜品桶'}
+         ];
+ 
+         //2.通用函数
+         var g = function(id){
+             if(id.substr(0,1) == "."){
+                 return document.getElementsByClassName(id.substr(1));
+             }
+             return document.getElementById(id);
+         }
+ 
+         //3.添加所有幻灯片&对应按钮
+         function addSliders(){
+         //3.1获取模板
+             var tpl_main= g('template_main').innerHTML
+                              .replace(/^\s*/,'')
+                             .replace(/\s*$/,'');
+             var tpl_ctrl= g('template_ctrl').innerHTML
+                              .replace(/^\s*/,'')
+                             .replace(/\s*$/,'');
+             //3.2定义最终输出 html的变量
+             var out_main = []; //所有幻灯片变量
+             var out_ctrl = []; //所有控制按钮变量
+             //3.3遍历所有数据，构建最终输出的 HTML
+             for(i in data){
+                 var _html_main = tpl_main
+                         .replace(/{{index}}/g,data[i].img)
+                         .replace(/{{h2}}/g,data[i].h1)
+                         .replace(/{{h3}}/g,data[i].h2)
+                         .replace(/{{css}}/g,['','main-i_right'][i%2]);
+                 var _html_ctrl = tpl_ctrl
+                         .replace(/{{index}}/g,data[i].img);
+                 out_main.push(_html_main);
+                 out_ctrl.push(_html_ctrl);
+         }
+         //3.4吧HTML回写到对应的DOM里面
+         g('template_main').innerHTML = out_main.join('');
+         g('template_ctrl').innerHTML = out_ctrl.join('');
+ 
+         //7.增加 #main_background,以免出现空白背景
+         g('template_main').innerHTML += tpl_main
+                         .replace(/{{index}}/g,'{{index}}');
+         g('main_{{index}}').id = 'main_background';
+         }
+ 
+         //5.幻灯片切换
+         function switchSlider(n){
+             //5.1获得要展现的幻丁片&控制按钮 DOM
+             var main = g('main_'+n);
+             var ctrl = g('ctrl_'+n);
+             //5.2获得所有幻灯片以及控制按钮
+             var clear_main = g('.main-i');
+             var clear_ctrl = g('.ctrl-i');
+             //5.3清除他们的active样式
+             for(i=0;i<clear_ctrl.length;i++){
+                 clear_main[i].className = clear_main[i].className.replace('main-i_active','');
+                 clear_ctrl[i].className = clear_ctrl[i].className.replace('ctrl-i_active','');
+             }
+             for(i=0;i<clear_ctrl.length; i++ ){   //标准的遍历语法，真正意义上的数组对象可以用 for in循环。
+                  clear_main[i].className = clear_main[i].className
+                                     .replace(' main-i_active','');
+                  clear_ctrl[i].className = clear_ctrl[i].className
+                                     .replace(' ctrl-i_active','');
+                         }
+             //5.4为当前控制按钮和图片加样式
+             main.className += ' main-i_active';
+             ctrl.className += ' ctrl-i_active';
+             //7.2切换时复制上一张幻灯片到 main_background 中
+             setTimeout(function(){
+                 g('main_background').innerHTML = main.innerHTML;
+             },1000)
+         }
+         //6.动态调整图片的 margin-top ,使其垂直居中
+         function movePictures(){
+             var pictures = g('.picture');
+             for(i=0; i<pictures.length; i++){
+                 pictures[i].style.marginTop = (-1 * pictures[i].clientHeight/2) + 'px';
+             }
+         }
+         //4.定义何时处理幻灯片输出
+         window.onload = function(){
+             addSliders();
+             switchSlider(2);
+             setTimeout(function(){
+                 movePictures();
+             },100); 
+        }
+     </script>
+         
+        
+        <div class="cleaner"></div>
+        </div> <!-- end of content -->
+
+        <div class="cleaner"> 
+            <td><tr></tr></td>
+            <td><tr></tr></td>
+             </div>
+        <div class="content_bottom">
+			<p style="color: #996633;font-size: 16px;">想要学习这些小吃制作的方法吗？</p><a href="制作方法页面.html"><p style="color: #FF5809;font-size: 19px;">请点击这里</p></a>
+        </div>
+	</div> <!-- end of content wrapper -->      
+    
+    <div id="footer">
+		<td><tr align="center">&nbsp;&nbsp;&nbsp;&nbsp;<p align="center"><strong><span class="S16">带</span><span class="S18">给</span><span class="S20">你</span><span class="S22">恋</span><span class="S24">人</span><span class="S26">般</span><span class="S28">的</span><span class="S30">享</span><span class="S32">受</span>，<span class="S32">拂</span><span class="S28">去</span><span class="S26">你</span><span class="S24">所</span><span class="S22">有</span><span class="S20">的</span><span class="S18">烦</span><span class="S16">恼</span>。</strong></p></tr></td>
+		<br><td><tr align="center"><p align="center"><strong><span class="S22">我在&nbsp;&nbsp;Steak&nbsp;&nbsp;And&nbsp;&nbsp;Dessert&nbsp;&nbsp;你在哪？？</span></strong></p> </tr></td><br>
+		<dl>
+			<dt style="color: #660033;font-size: 23px;text-align: center" class="p1">&nbsp;&nbsp;&nbsp;&nbsp;世界著名甜点一览</dt>
+			<br>
+    <ul type="disc">
+		<li style="color: #663300;font-size: 18px;">1.提拉米苏（Tiramisu） 　　
+</li>
+   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/提拉米苏.jpg"><br><br>
+   <p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+　　著名的意大利甜点，它起源于一个温馨的故事：二战时期，一个意大利士兵的妻子打算给即将出征的丈夫准备干粮，但由于家里很贫穷，因此她就把所有能吃的饼干和面包都做进了一个糕点里，那个糕点就是提拉米苏。因此提拉米苏在意大利语里有“带我走”的意思，象征食用者吃下的不只是美味，还有爱和幸福。</p>
+   <br><br>
+    <li style="color: #663300;font-size: 18px;">维也纳巧克力杏仁蛋糕</li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/维也纳巧克力杏仁蛋糕.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以奥地利首都命名的蛋糕，名字起源于奥地利最好的宾馆之名。当年宾馆开幕时，一位糕饼师傅烘焙出了一种口感特殊的蛋糕。它不仅受到了皇帝的喜爱，还被皇帝亲自赐名为“Imperial Torte”（甜密的问候）。 　　由于维也纳巧克力杏仁蛋糕有着使用可口的牛奶巧克力和甜美杏仁制成的外层，以及铺满碎杏仁和可可亚的内层，因此整个蛋糕吃起来口感既甜美又细腻</p><br><br>
+    <li style="color: #663300;font-size: 18px;">3.圣诞面包（Stollen）</li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/圣诞面包.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;德国著名甜点，至今己有五百年历史。由于浸过大量黄油，因此圣诞面包的口感与蛋糕十分接近。 　　圣诞面包的制作过程十分繁复，即使是在欧洲，也只有为数不多的老饼屋能够坚持以纯手工传统配方生产。要完成一个圣诞面包，必须花上半个月的时间。首先，要将干果泡在酒里，然后将浸透酒香的干果和杏仁膏揉入重黄油面团，在烘烤之后，还得在布满皱折的表面上撒满厚厚的白色糖粉，一个仿佛覆满了皑皑白雪的圣诞水果面包才算大功告成。</p><br><br>
+    <li style="color: #663300;font-size: 18px;">4. 长崎蜂蜜蛋糕（Nagaski Castella） </li>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="图片2/长崎蜂蜜蛋糕.jpg"><br><br><p style="color: #996633;font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本著名西点。蜂蜜蛋糕最早起源于荷兰古国，当时的贵族在招待使节时都会用它来向宾客表达主人最隆重的敬意。 　　大约十六世纪时，由于当时的德川幕府采取锁国政策，仅在局部开放长崎等少数地点做为外国船队访日的港口，因此希望进入日本做生意的荷兰商人便特地面见天皇，并呈上荷兰皇室招待贵宾用的精致蛋糕。蛋糕特殊的香甜气息与滑细的口感，立即博得天皇的赞赏。到了十七世纪，葡萄牙的传教士和商人也远渡重洋来到长崎。他们为与当地人建立友谊，便采取向贵族分送葡萄酒、向平民分送甜点的策略，希望借此传播基督教。这种用砂糖、鸡蛋和面粉做成的糕点立刻在民众间大受欢迎，这就是长崎蜂蜜蛋糕的由来。</p><br><br>
+		
+			</ul>
+     </dl>
+    </div>
+
+</div> 
+<!-- end of container -->
+
+</div>
+</div>
+</body>
+</html>

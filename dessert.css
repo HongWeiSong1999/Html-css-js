@@ -1,0 +1,12 @@
+﻿td {font-family: 宋体;font-size: 18px;color: #dab9a6;}
+body{background-color: #2a1912;font-size: 12px;
+	margin-left: 130px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	line-height:28px;}
+.td1 {background-color:#ffbd90;}
+.td2 {background-color:#5c3c27;}
+.S24B {font-size: 24px;font-weight: bold;}  /*标题*/
+.p1{border-style: dotted }    /*操作流程*/
+.p2{border-style: groove solid} /*步骤123456*/

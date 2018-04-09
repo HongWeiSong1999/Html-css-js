@@ -1,0 +1,52 @@
+@charset "utf-8";
+body{
+	padding: 0;
+	font-size: 12px;
+	color: #000000;
+	margin-top:0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+table{
+	margin: 0;
+padding: 2;
+	border: 0px;
+	text-align: center;
+}
+.reg_title{
+	font-size: 35px;
+	line-height: 55px;
+	font-weight: bold;
+	color: #FF3300;
+}
+.emphasize{
+	color: #FF0000;
+}
+.inputTitle{
+	text-align: right;
+	font-size: 25px;
+}
+.inputTitle2{  /*隐私条款*/
+	text-align: right;
+	font-size: 14px;
+	color: #A248D0
+}
+input{
+	height: 30px;
+	width: 250px;margin: 4px;
+	border: 4px;
+	solid: #CCCCCC;
+}
+textarea{
+	border: 1px #c3c3c3 solid;overflow-x:auto;
+	overflow-y:hidden;width: 200px;
+}
+.radioInput{
+	width: 50px;
+	margin: 2px;
+}
+.button{
+	width: 60px;
+	margin-right: 5px;
+}

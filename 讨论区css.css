@@ -1,0 +1,379 @@
+﻿body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	font-family: Georgia, "Times New Roman", Times, serif; /*字体有无的先后顺序*/
+	font-size: 13px;
+	color: #543d27;
+	background: #2c261d;
+}
+		
+a:link, a:visited { color: #631c00; text-decoration: none; font-weight: normal; } /*普通链接，浏览过的链接*/
+a:active, a:hover { color: #000000; text-decoration: underline; }/*鼠标经过有下划线，移掉鼠标则没有下划线*/
+
+p { margin: 0px; padding: 0px; }/*对齐方式以及间距都为0*/
+
+img { margin: 0px; padding: 0px; border: none; }
+
+.cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
+.cleaner_h10 { clear: both; width:100%; height: 10px; }
+.cleaner_h20 { clear: both; width:100%; height: 20px; }
+.cleaner_h30 { clear: both; width:100%; height: 30px; }
+.cleaner_h40 { clear: both; width:100%; height: 40px; }
+.cleaner_h50 { clear: both; width:100%; height: 50px; }
+.cleaner_h60 { clear: both; width:100%; height: 60px; }
+
+.divider {
+	clear: both;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
+	background: url(../html/images/templatemo_horizontal_divider.jpg)bottom repeat-x;
+}
+
+.fl { float: left; }
+.fr { float: right; }
+
+.margin_r_60 { margin-right: 60px; }
+
+.margin_r_330 { margin-right: 330px; }
+
+.button_01 a {
+	display: block;
+	width: 90px;
+	height: 30px;
+	padding: 5px 0 0 0;
+	background: url(images/木块1.png) no-repeat;
+	
+	color: #dbd0c1;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+.button_01 a:hover {
+	color: #FFFF99;
+}
+
+h1 {
+	margin: 0px;
+	padding: 2px 0;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+h2 {
+	margin: 0px;
+	padding: 2px 0;
+	font-size: 30px;
+	font-weight: normal;
+}
+
+h3 {
+	margin: 0 0 10px 0;
+	padding: 0 0 0px 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: #e0b328;	
+}
+
+h4 {
+	margin: 0 0 10px 0;
+	padding: 0 0 5px 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: #27231d;
+}
+
+.image_wrapper {
+	border: 1px solid #ffffff;
+	margin-top: 3px;
+	margin-bottom: 5px;
+}
+
+.fl_image {
+	float: left;
+	margin-right: 15px 
+}
+
+.fr_image {
+	float: right;
+	margin-left: 15px 
+}
+
+#container_wrapper_outter {
+	width: 100%;
+	background: url(images/网页上方的图片背景.jpg)center top no-repeat;
+}
+
+#container_wrapper_inner {
+	width: 100%;
+	background: url(images/内部背景图片.jpg)center bottom no-repeat;
+}
+
+#container {
+	width: 990px;
+	margin: 0 auto;
+}
+
+/* menu */
+
+#menu {
+	position: relative;
+	clear: both;
+	width: 930px;
+	height: 110px;
+	padding: 0 30px;
+	background:	url(images/木板条.jpg)no-repeat;
+}
+
+#menu ul {
+	padding: 15px 0 0 0;
+	margin: 0px;
+	list-style: none;
+}
+
+#menu ul li {
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+}
+
+#menu ul li a {
+	float: left;
+	display: block;
+	width: 100px;
+	padding: 0 0 0 0;
+	font-size: 16px;
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: #f9efd0;	
+	outline: none;
+}
+
+#menu li a:hover, #menu li .current {
+	color: #ebc759;
+}
+
+#site_title {
+	position: absolute;
+	width: 320px;
+	left: 333px;
+	padding: 15px 0 0 0;
+	top: 0px;
+	text-align: center;
+}
+
+#site_title h1 a {
+	margin: 0px;
+	padding: 0px;
+	font-size: 36px;
+	color: #ffffff;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#site_title h1 a:hover {
+	font-weight: normal;	
+	text-decoration: none;
+}
+
+#site_title h1 a span {
+	display: block;
+	margin-top: 14px;
+	font-size: 16px;
+	color: #3d2a10;
+}
+#banner {
+	clear: both;
+	width: 990px;
+	height: 250px;
+	background: url(images/中间靠上牛排.jpg)center no-repeat;
+}
+
+#banner #banner_section {
+	float: right;
+	width: 400px;
+	margin-top: 30px;
+	margin-right: 80px;
+	text-align: center;
+}
+
+#banner h2 {
+	color: #eaecd0;
+	font-size: 22px;
+	line-height: 25px;
+	margin-bottom: 24px;
+}
+
+#banner p {
+	color: #eeefd4;
+	font-size: 16px;
+	line-height: 25px;
+	margin-bottom: 30px;
+}
+#content_wrapper {
+	position: relative;
+	clear: both;
+	width: 990px;
+	
+	background: url(images/牛排下小条.jpg)center repeat-y;	
+}
+
+#content {
+	width: 940px;
+	padding: 80px 25px 0 25px;
+	margin-bottom: 85px;
+	background: url(images/小餐盘.jpg)top no-repeat;
+}
+
+#content_wrapper .content_bottom {
+	position: absolute;
+	width: 990px;
+	height: 85px;
+	bottom: -85px;
+	left: 0px;
+	background: url(images/小条2.jpg)no-repeat;
+}
+
+#content h2 {
+	display: block;
+	font-size: 24px;
+	padding: 0 0 25px 30px;
+	margin-bottom: 10px;
+	color: #3e2b18;
+	background: url(images/树枝条.png)bottom left no-repeat;
+}
+#main_column {
+	float: left;
+	width: 590px;
+	margin-left: 50px;
+	
+}
+
+#side_column {
+	position: relative;
+	float: right;
+	width: 180px;
+	color: #20150f;
+	background: #967853 url(images/纸片1.png)no-repeat;;
+	margin: 0 50px 50px 0;
+	padding: 20px 20px 0 20px;
+}
+
+#side_column .side_column_bottom {
+	position: absolute;
+	bottom: -50px;
+	left: -0px;
+	width: 220px;
+	height: 50px;
+	background:url(images/纸片2.png)no-repeat;
+}
+
+#main_column p {
+	margin-bottom: 10px;
+}
+
+#main_column .section_w590 {
+	width: 590px;
+}
+
+.section_w590_content {
+	padding-left: 30px;
+}
+
+.popular_meal_box {
+	float: left;
+	overflow: hidden;
+	width: 190px;
+	height: 250px;
+	padding: 28px;
+	background: url(images/纸片3.png)no-repeat;
+}
+
+.popular_meal_box img {
+	border: 1px solid #5a3f28;
+	margin-bottom: 10px;	
+}
+
+.popular_meal_box p {
+	color: #191007;
+	margin-bottom: 10px;
+}
+
+.popular_meal_box .price {
+	float: left;
+	color: #e0b328;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.popular_meal_box a {
+	float: right;
+	color: #e0b328;
+	font-weight: bold;
+}
+
+
+#side_column .side_column_section {
+	margin-bottom: 30px;
+}
+
+.side_column_section img {
+	border: 1px solid #ffffff;
+	margin-bottom: 10px;
+}
+
+.category_list li {
+	margin: 0px;
+	padding: 0 0 5px 0;
+}
+
+.category_list li a {
+	color: #20150f;
+}
+
+.category_list li a:hover {
+	color: #990000;
+}
+#footer {
+	clear: both;
+	width: 930px;
+	padding: 50px 30px;
+	color: #595144;
+	
+}
+
+#footer a {
+	color: #696052;
+}
+
+#footer .footer_menu {
+	margin: 0 0 10px 0;
+	padding: 0px;
+	list-style: none;
+}
+
+.footer_menu li {
+	margin: 0px;
+	padding: 0 20px;
+	display: inline;
+	border-right: 1px solid #696052;
+}
+
+.footer_menu .last_menu {
+	border: none;
+}
+td {font-family: 宋体;font-size: 18px;color: #dab9a6;}
+.td1 {background-color:#5c3c27;}
+.td2 {background-color:#5c3c27;} 
+.S24B {font-size: 24px;font-weight: bold;color: #8B0000}/*寄语*/
+.S20B {font-size: 20px;font-weight: bold;color: #D19275}
+.S19B {font-size: 19px;font-weight: bold;color: #000000;} 
+.S18B {font-size: 18px;font-weight: bold;color: #D2691E;} 
+.S17B {font-size: 17px;font-weight: bold;color: #000000;} 
+.S16B {font-size: 15px;font-weight: bold;color: #D2691E;} 
+.S15B {font-size: 15px;font-weight: bold;color: #000000;} 
+.p2{border-style: groove solid} /*步骤123456*/
+/* end of footer */

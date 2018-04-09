@@ -1,0 +1,36 @@
+﻿<script language="javascript" type="text/javascript">
+	window.onload = function(){
+		showLeftTime()
+	}
+	function checkTime(i){
+		if(i<10){
+			i = "0"+i;
+		}
+		return i;
+	}
+function showLeftTime()
+{
+var now=new Date();
+var year=now.getFullYear();
+var month=now.getMonth()+1;
+var day=now.getDate();
+var d = now.getDay();
+var hours=now.getHours();
+var minutes=now.getMinutes();
+var seconds=now.getSeconds();
+minutes = checkTime(minutes);
+seconds = checkTime(seconds);
+var weekday = new Array(7)
+weekday[0] = "星期日"
+weekday[1] = "星期一"
+weekday[2] = "星期二"
+weekday[3] = "星期三"
+weekday[4] = "星期四"
+weekday[5] = "星期五"
+weekday[6] = "星期六"
+document.all.show.innerHTML=""+year+"年"+month+"月"+day+"日 "+weekday[d]+hours+":"+minutes+":"+seconds+"";
+//一秒刷新一次显示时间
+var timeID=setTimeout(showLeftTime,1000);
+}
+//-->
+</script>
